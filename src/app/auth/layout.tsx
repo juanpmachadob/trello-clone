@@ -1,14 +1,21 @@
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { auth } from "@/auth";
 
-export default function AuthLayout({
+export default async function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+  if (session?.user) {
+    redirect("/boards");
+  }
+
   return (
-    <main className="relative flex min-h-screen justify-center bg-background">
-      <div className="my-12 flex w-3/12 flex-col items-center justify-center self-start rounded-md bg-white p-8 shadow-md">
+    <main className="relative flex min-h-screen justify-center bg-white sm:bg-background">
+      <div className="z-10 flex max-w-96 flex-col items-center justify-center self-start rounded-md bg-white p-8 sm:my-12 sm:shadow-md">
         <Image
           src="/assets/logos/trello-color.svg"
           alt="Trello logo"

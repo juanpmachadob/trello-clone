@@ -1,0 +1,1 @@
+export { authenticateWithThirdParty } from "./login";
