@@ -1,7 +1,7 @@
 "use client";
-import Input from "@/components/ui/inputs/Input";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Input } from "@/components/ui";
 
 type FormInputs = {
   email: string;

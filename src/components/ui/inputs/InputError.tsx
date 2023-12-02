@@ -4,7 +4,7 @@ interface Props {
   error?: FieldError;
 }
 
-const InputError = ({ error }: Props) => {
+export const InputError = ({ error }: Props) => {
   if (error)
     return (
       <span role="alert" className="text-xs text-danger">
@@ -12,4 +12,3 @@ const InputError = ({ error }: Props) => {
       </span>
     );
 };
-export default InputError;

@@ -1,6 +1,6 @@
 "use client";
-import Input from "@/components/ui/inputs/Input";
 import { useForm } from "react-hook-form";
+import { Input } from "@/components/ui";
 
 type FormInputs = {
   email: string;
@@ -25,7 +25,10 @@ const ResetPasswordForm = () => {
       <h1 className="mb-2 text-center font-semibold">Can&apos;t log in?</h1>
 
       <div>
-        <label htmlFor="email" className="text-xs font-semibold text-text-alternative">
+        <label
+          htmlFor="email"
+          className="text-xs font-semibold text-text-alternative"
+        >
           We&apos;ll send a recovery link to
         </label>
         <Input

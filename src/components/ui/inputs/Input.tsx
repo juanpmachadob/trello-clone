@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import InputError from "./InputError";
 import { FieldError } from "react-hook-form";
 import { Ref, forwardRef } from "react";
+import { InputError } from "./InputError";
 
 interface Props {
   id: string;
@@ -12,7 +12,7 @@ interface Props {
   className?: string;
 }
 
-const Input = forwardRef(
+export const Input = forwardRef(
   (
     {
       autoFocus = false,
@@ -47,4 +47,3 @@ const Input = forwardRef(
 );
 
 Input.displayName = "Input";
-export default Input;
