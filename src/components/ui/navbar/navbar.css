@@ -1,0 +1,4 @@
+.trello-animated-alternative {
+  filter: brightness(0) saturate(100%) invert(30%) sepia(53%) saturate(323%)
+    hue-rotate(179deg) brightness(91%) contrast(88%);
+}
