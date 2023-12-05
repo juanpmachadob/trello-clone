@@ -1,3 +1,6 @@
+export * from "./boards-section/BoardsSection";
+export * from "./board-item/BoardItem";
+
 export * from "./board-header/BoardHeader";
 
 export * from "./list/List";
