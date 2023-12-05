@@ -12,9 +12,9 @@ export const Navbar = ({ isDarkContent, className }: Props) => {
   return (
     <header
       className={clsx(
-        "flex h-12 flex-row items-center gap-4 border-b border-b-white/15 px-4",
-        { "text-white": !isDarkContent },
-        { "text-text-alternative": isDarkContent },
+        "flex h-12 w-full flex-row items-center gap-4 border-b px-4",
+        { "text-white border-b-white/15": !isDarkContent },
+        { "text-text-alternative border-b-black/15": isDarkContent },
         className
       )}
     >
