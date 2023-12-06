@@ -6,11 +6,19 @@ export const metadata = {
   description: "Workspace for all your projects and tasks",
 };
 
-export default function BoardPage() {
+interface Props {
+  params: {
+    id: string;
+  };
+}
+
+export default function BoardPage({ params }: Props) {
+  const { id } = params;
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0C66E4] to-[#37B4C3]">
       <Navbar className="bg-[#08479e]" />
-      <BoardHeader />
+      <BoardHeader title={`Board ${id}`} />
       <div className="m-4 grid grid-cols-5 gap-4">
         <List />
         <ListAdd />
