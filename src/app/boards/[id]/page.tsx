@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getBoardById } from "@/actions";
-import { BoardHeader, List, ListAdd } from "@/components/boards";
+import { BoardHeader, ListContainer, ListAdd } from "@/components/boards";
 import { Navbar } from "@/components/ui";
 
 export const metadata = {
@@ -25,7 +25,7 @@ export default async function BoardPage({ params }: Props) {
       <BoardHeader title={board.title} />
       <div className="m-4 grid grid-cols-5 gap-4">
         {board.lists.map((list) => (
-          <List key={list.id} />
+          <ListContainer key={list.id} />
         ))}
         <ListAdd />
       </div>

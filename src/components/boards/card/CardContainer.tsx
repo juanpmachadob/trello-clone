@@ -4,7 +4,7 @@ interface Props {
   text?: string;
 }
 
-export const ListCard = ({ text }: Props) => {
+export const CardContainer = ({ text }: Props) => {
   return (
     <span className="group relative flex w-full cursor-pointer items-center justify-between rounded-lg bg-white p-2 text-sm text-text shadow outline-2 hover:outline hover:outline-primary">
       {text}
