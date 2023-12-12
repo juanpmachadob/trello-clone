@@ -17,7 +17,7 @@ export const BoardsSection = ({ Icon, title, boards }: Props) => {
       </header>
       <ul className="grid grid-cols-4 gap-4">
         {boards.map((board) => (
-          <BoardItem key={board.id} id={board.id} title={board.title} />
+          <BoardItem key={board.id} board={board} />
         ))}
       </ul>
     </div>
