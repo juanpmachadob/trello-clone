@@ -1,10 +1,11 @@
 import { IconType } from "react-icons";
 import { BoardItem } from "@/components/boards";
+import type { Board } from "@/interfaces";
 
 interface Props {
   Icon: IconType;
   title: string;
-  boards: Array<{ id: string; title: string }>;
+  boards: Board[];
 }
 
 export const BoardsSection = ({ Icon, title, boards }: Props) => {
