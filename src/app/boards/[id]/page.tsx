@@ -1,5 +1,7 @@
-import { Navbar } from "@/components/ui";
+import { notFound } from "next/navigation";
+import { getBoardById } from "@/actions";
 import { BoardHeader, List, ListAdd } from "@/components/boards";
+import { Navbar } from "@/components/ui";
 
 export const metadata = {
   title: "Workspace",
@@ -12,15 +14,19 @@ interface Props {
   };
 }
 
-export default function BoardPage({ params }: Props) {
+export default async function BoardPage({ params }: Props) {
   const { id } = params;
+  const { data: board } = await getBoardById(id);
 
+  if (!board) notFound();
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0C66E4] to-[#37B4C3]">
       <Navbar className="bg-[#08479e]" />
-      <BoardHeader title={`Board ${id}`} />
+      <BoardHeader title={board.title} />
       <div className="m-4 grid grid-cols-5 gap-4">
-        <List />
+        {board.lists.map((list) => (
+          <List key={list.id} />
+        ))}
         <ListAdd />
       </div>
     </main>
