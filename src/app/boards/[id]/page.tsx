@@ -25,7 +25,7 @@ export default async function BoardPage({ params }: Props) {
       <BoardHeader title={board.title} />
       <div className="m-4 grid grid-cols-5 gap-4">
         {board.lists.map((list) => (
-          <ListContainer key={list.id} />
+          <ListContainer key={list.id} list={list} />
         ))}
         <ListAdd />
       </div>
