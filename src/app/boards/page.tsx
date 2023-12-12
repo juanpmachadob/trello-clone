@@ -10,7 +10,7 @@ export default async function BoardsPage() {
   const favoriteBoards: Board[] = [];
   const noFavoriteBoards: Board[] = [];
 
-  boards.forEach((board) => {
+  boards?.forEach((board) => {
     if (!board.isFavorite) {
       favoriteBoards.push(board);
       return;

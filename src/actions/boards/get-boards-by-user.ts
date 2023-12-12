@@ -14,7 +14,7 @@ export const getBoardsByUser = async (userId: string) =>
       console.error(error);
       return {
         ok: false,
-        data: [],
+        data: null,
         error: "Internal server error",
       };
     });
