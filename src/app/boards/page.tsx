@@ -1,8 +1,13 @@
+import { Metadata } from "next";
 import { IoStarOutline, IoTimeOutline } from "react-icons/io5";
 import { getBoardsByUser } from "@/actions/boards";
 import { BoardsSection } from "@/components/boards";
 import { Navbar } from "@/components/ui";
 import { Board } from "@/interfaces";
+
+export const metadata: Metadata = {
+  title: "Boards",
+};
 
 export default async function BoardsPage() {
   const { data: boards } = await getBoardsByUser("dummy-user-1");

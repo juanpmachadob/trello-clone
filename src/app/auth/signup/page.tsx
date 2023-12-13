@@ -1,5 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { SignupForm, ThirdPartyAuthForm } from "@/components/auth";
+
+export const metadata: Metadata = {
+  title: "Sign Up",
+};
 
 export default function SignUpPage() {
   return (

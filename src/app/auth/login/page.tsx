@@ -1,5 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { LoginForm, ThirdPartyAuthForm } from "@/components/auth";
+
+export const metadata: Metadata = {
+  title: "Log In",
+};
 
 export default function LoginPage() {
   return (
