@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui";
+import { loginWithCredentials } from "@/actions/auth/login";
 
 type FormInputs = {
   email: string;
@@ -16,11 +17,14 @@ const LoginForm = () => {
   } = useForm<FormInputs>();
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     if (!showPassword) {
       setShowPassword(true);
       return;
     }
+
+    const { email, password } = data;
+    await loginWithCredentials(email.toLowerCase(), password);
   });
 
   return (

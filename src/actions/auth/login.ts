@@ -27,3 +27,26 @@ export const authenticateWithThirdParty = async (
         ok: false,
       };
     });
+
+export const loginWithCredentials = async (email: string, password: string) =>
+  signIn("credentials", {
+    email,
+    password,
+    redirectTo: "/boards",
+  })
+    .then(() => {
+      return {
+        ok: true,
+      };
+    })
+    .catch((err) => {
+      // Fix for redirect errors
+      if (isRedirectError(err)) {
+        console.error(err);
+        throw err;
+      }
+
+      return {
+        ok: false,
+      };
+    });
