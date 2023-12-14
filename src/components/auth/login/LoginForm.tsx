@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { loginWithCredentials } from "@/actions";
 import { Input } from "@/components/ui";
-import { loginWithCredentials } from "@/actions/auth/login";
 
 type FormInputs = {
   email: string;

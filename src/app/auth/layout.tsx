@@ -28,8 +28,8 @@ export default async function AuthLayout({
         <hr className="my-4 w-full border-background-alternative" />
         <footer className="flex flex-col items-center gap-2 text-center">
           <p className="text-balance text-xs">
-            This entire project is a simple clone of Trello, made for
-            educational purposes only.
+            This entire project is a simple <b>clone</b> of Trello, made for
+            <b> educational purposes</b> only.
           </p>
           <p className="text-xs text-text-alternative">
             You can{" "}
