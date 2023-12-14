@@ -1,9 +1,10 @@
 import type { SeedBoard, SeedCard, SeedList, SeedUser } from "./seed.interface";
+import bcryptjs from "bcryptjs";
 
 export const seedUser: SeedUser = {
   id: "dummy-user-1",
   email: "trello@test.com",
-  password: "123456",
+  password: bcryptjs.hashSync("123456"),
 };
 
 export const seedBoards: SeedBoard[] = [
