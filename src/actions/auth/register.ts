@@ -16,10 +16,10 @@ export const registerWithCredentials = async (
     .catch((err) => {
       // Fix for redirect errors
       if (isRedirectError(err)) {
-        console.error(err);
         throw err;
       }
 
+      console.error(err);
       return {
         ok: false,
       };

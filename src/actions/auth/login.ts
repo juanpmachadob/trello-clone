@@ -19,10 +19,10 @@ export const authenticateWithThirdParty = async (
     .catch((err) => {
       // Fix for redirect errors
       if (isRedirectError(err)) {
-        console.error(err);
         throw err;
       }
 
+      console.log("err :>> ", err);
       return {
         ok: false,
       };
@@ -42,10 +42,10 @@ export const loginWithCredentials = async (email: string, password: string) =>
     .catch((err) => {
       // Fix for redirect errors
       if (isRedirectError(err)) {
-        console.error(err);
         throw err;
       }
 
+      console.error(err);
       return {
         ok: false,
       };
