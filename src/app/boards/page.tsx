@@ -1,5 +1,7 @@
 import { Metadata } from "next";
-import { IoStarOutline, IoTimeOutline } from "react-icons/io5";
+import { redirect } from "next/navigation";
+import { IoStarOutline } from "react-icons/io5";
+import { auth } from "@/auth";
 import { getBoardsByUser } from "@/actions/boards";
 import { BoardsSection } from "@/components/boards";
 import { Navbar } from "@/components/ui";
@@ -10,19 +12,13 @@ export const metadata: Metadata = {
 };
 
 export default async function BoardsPage() {
-  const { data: boards } = await getBoardsByUser("dummy-user-1");
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!userId) redirect("/auth/login?redirectTo=/boards");
 
-  const favoriteBoards: Board[] = [];
-  const noFavoriteBoards: Board[] = [];
-
-  boards?.forEach((board) => {
-    if (!board.isFavorite) {
-      favoriteBoards.push(board);
-      return;
-    }
-
-    noFavoriteBoards.push(board);
-  });
+  const { data } = await getBoardsByUser(userId);
+  const boards = data || [];
+  const favoriteBoards = boards.filter((board: Board) => board.isFavorite);
 
   return (
     <main className="flex min-h-screen flex-auto flex-col items-center bg-white">
@@ -33,13 +29,6 @@ export default async function BoardsPage() {
             Icon={IoStarOutline}
             title="Starred boards"
             boards={favoriteBoards}
-          />
-        )}
-        {favoriteBoards.length > 0 && (
-          <BoardsSection
-            Icon={IoTimeOutline}
-            title="Recently viewed"
-            boards={noFavoriteBoards}
           />
         )}
       </div>
