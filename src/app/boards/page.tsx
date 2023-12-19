@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { IoStarOutline } from "react-icons/io5";
+import { IoAlbums, IoStarOutline } from "react-icons/io5";
 import { auth } from "@/auth";
 import { getBoardsByUser } from "@/actions/boards";
-import { BoardsSection } from "@/components/boards";
+import { BoardsSection, BoardsSectionWithBoardAdd } from "@/components/boards";
 import { Navbar } from "@/components/ui";
 import { Board } from "@/interfaces";
 
@@ -20,6 +20,11 @@ export default async function BoardsPage() {
   const boards = data || [];
   const favoriteBoards = boards.filter((board: Board) => board.isFavorite);
 
+  const handleAddBoard = async () => {
+    "use server";
+    console.log("Creating...");
+  };
+
   return (
     <main className="flex min-h-screen flex-auto flex-col items-center bg-white">
       <Navbar className="bg-white" isDarkContent={true} />
@@ -31,6 +36,12 @@ export default async function BoardsPage() {
             boards={favoriteBoards}
           />
         )}
+        <BoardsSectionWithBoardAdd
+          Icon={IoAlbums}
+          title="All boards"
+          boards={boards}
+          handleAdd={handleAddBoard}
+        />
       </div>
     </main>
   );
