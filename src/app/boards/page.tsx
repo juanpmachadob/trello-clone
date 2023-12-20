@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { IoAlbums, IoStarOutline } from "react-icons/io5";
 import { auth } from "@/auth";
-import { getBoardsByUser } from "@/actions/boards";
+import { createBoard, getBoardsByUser } from "@/actions/boards";
 import { BoardsSection, BoardsSectionWithBoardAdd } from "@/components/boards";
 import { Navbar } from "@/components/ui";
 import { Board } from "@/interfaces";
@@ -22,7 +22,10 @@ export default async function BoardsPage() {
 
   const handleAddBoard = async () => {
     "use server";
-    console.log("Creating...");
+    const { ok, data: newBoard } = await createBoard("New board");
+    if (ok && newBoard?.id) {
+      redirect(`/boards/${newBoard.id}`);
+    }
   };
 
   return (
