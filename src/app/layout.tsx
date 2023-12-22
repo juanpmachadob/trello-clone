@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
+import { Providers } from "@/providers/Providers";
 import "./globals.css";
 
 const font = Noto_Sans({
@@ -22,7 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`text-text ${font.className}`}>{children}</body>
+      <body className={`text-text ${font.className}`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
