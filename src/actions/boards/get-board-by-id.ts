@@ -1,3 +1,4 @@
+"use server";
 import prisma from "@/lib/prisma";
 
 export const getBoardById = async (id: string) =>
