@@ -28,7 +28,7 @@ export default async function BoardPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0C66E4] to-[#37B4C3]">
       <Navbar className="bg-[#08479e]" />
-      <BoardHeader title={board.title} />
+      <BoardHeader board={board} />
       <div className="m-4 grid grid-cols-5 gap-4">
         {board.lists.map((list) => (
           <ListContainer key={list.id} list={list} />
