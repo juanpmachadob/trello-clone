@@ -8,8 +8,22 @@ export const ProfileMenu = () => {
   const { data: session } = useSession();
   if (!session) return null;
 
+  /**
+   * Closes the menu popover when clicking outside
+   */
+  const onBlur = (e: React.FocusEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setShowMenu(false);
+    }
+  };
+
   return (
-    <div id="menu-button" className="relative flex items-center text-text">
+    <div
+      id="menu-button"
+      tabIndex={-1}
+      onBlur={onBlur}
+      className="relative flex items-center text-text"
+    >
       <span
         className="cursor-pointer rounded-full hover:outline hover:outline-4 hover:outline-background"
         onClick={() => setShowMenu(!showMenu)}
@@ -45,12 +59,12 @@ export const ProfileMenu = () => {
           {/* Options */}
           <ul className="flex cursor-pointer flex-col gap-4">
             <li className="w-full text-sm">
-              <button
+              <div
                 className="w-full px-4 py-2 text-start hover:bg-background"
                 onClick={() => signOut()}
               >
                 Log out
-              </button>
+              </div>
             </li>
           </ul>
         </div>
