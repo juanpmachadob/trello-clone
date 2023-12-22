@@ -15,8 +15,10 @@ export const Navbar = ({ isDarkContent, className }: Props) => {
     <header
       className={clsx(
         "flex h-12 w-full justify-between border-b px-4",
-        { "text-white border-b-white/15": !isDarkContent },
-        { "text-text-alternative border-b-black/15": isDarkContent },
+        {
+          "text-white border-b-white/15": !isDarkContent,
+          "text-text-alternative border-b-black/15": isDarkContent,
+        },
         className
       )}
     >
@@ -24,11 +26,10 @@ export const Navbar = ({ isDarkContent, className }: Props) => {
         <IoApps />
         <Link
           href="/boards"
-          className={clsx(
-            "rounded-sm p-2",
-            { "hover:bg-white/15": !isDarkContent },
-            { "hover:bg-black/15": isDarkContent }
-          )}
+          className={clsx("rounded-sm p-2", {
+            "hover:bg-white/15": !isDarkContent,
+            "hover:bg-black/15": isDarkContent,
+          })}
         >
           <Image
             src="/assets/logos/trello-animated.gif"
@@ -41,7 +42,7 @@ export const Navbar = ({ isDarkContent, className }: Props) => {
           />
         </Link>
       </div>
-      <ProfileMenu />
+      <ProfileMenu isDarkContent={isDarkContent} />
     </header>
   );
 };

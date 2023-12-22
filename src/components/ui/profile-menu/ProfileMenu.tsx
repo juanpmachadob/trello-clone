@@ -1,9 +1,14 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
+import clsx from "clsx";
 import { UserAvatar } from "@/components/ui";
 
-export const ProfileMenu = () => {
+interface Props {
+  isDarkContent?: boolean;
+}
+
+export const ProfileMenu = ({isDarkContent}: Props) => {
   const [showMenu, setShowMenu] = useState(false);
   const { data: session } = useSession();
   if (!session) return null;
@@ -25,10 +30,16 @@ export const ProfileMenu = () => {
       className="relative flex items-center text-text"
     >
       <span
-        className="cursor-pointer rounded-full hover:outline hover:outline-4 hover:outline-background"
+        className={clsx(
+          "cursor-pointer rounded-full hover:outline hover:outline-4",
+          {
+            "hover:outline-white/15": !isDarkContent,
+            "hover:outline-black/15": isDarkContent
+          }
+        )}
         onClick={() => setShowMenu(!showMenu)}
       >
-        <UserAvatar height={32} width={32} />
+        <UserAvatar height={24} width={24} />
       </span>
 
       {showMenu && (
