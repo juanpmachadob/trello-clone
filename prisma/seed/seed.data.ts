@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs";
 
 export const seedUser: SeedUser = {
   id: "dummy-user-1",
+  name: "Trello",
   email: "trello@test.com",
   password: bcryptjs.hashSync("123456"),
 };
