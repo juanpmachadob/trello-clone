@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 import { createBoard, getBoardsByUser } from "@/actions/boards";
 import { BoardsSection, BoardsSectionWithBoardAdd } from "@/components/boards";
 import { Navbar } from "@/components/ui";
-import { Board } from "@/interfaces";
+import type { Board } from "@/interfaces";
 
 export const metadata: Metadata = {
   title: "Boards",

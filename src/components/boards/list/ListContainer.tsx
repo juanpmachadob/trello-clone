@@ -1,7 +1,5 @@
-import { CardContainer } from "@/components/boards";
-import { ListFooter } from "./ListFooter";
-import { ListTitle } from "./ListTitle";
-import { List } from "@/interfaces";
+import { CardContainer, ListFooter, ListTitle } from "@/components/boards";
+import type { List } from "@/interfaces";
 
 interface Props {
   list: List;

@@ -1,5 +1,5 @@
 import { IoBrushOutline } from "react-icons/io5";
-import { Card } from "@/interfaces";
+import type { Card } from "@/interfaces";
 
 interface Props {
   card: Card;
