@@ -1,6 +1,7 @@
 export * from "./boards-section/BoardsSection";
 export * from "./boards-section/BoardsSectionWithBoardAdd";
 export * from "./board-item/BoardItem";
+export * from "./toggle-favorite/ToggleFavorite";
 export * from "./board-add/BoardAdd";
 
 export * from "./board-header/BoardHeader";

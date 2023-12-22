@@ -5,10 +5,11 @@ import { toggleBoardFavorite } from "@/actions";
 import type { Board } from "@/interfaces";
 
 interface Props {
+  className?: string;
   board: Board;
 }
 
-export const BoardItemButtons = ({ board }: Props) => {
+export const ToggleFavorite = ({ className, board }: Props) => {
   const [boardOptimistic, toggleBoardOptimistic] = useOptimistic(
     board,
     (state, newFavoriteValue: boolean) => ({
@@ -29,16 +30,15 @@ export const BoardItemButtons = ({ board }: Props) => {
   };
 
   return (
-    <button className="absolute bottom-0 right-0 m-3 text-white duration-150 hover:scale-110">
+    <button
+      className={`group duration-150 ${className}`}
+      onClick={handleToggleBoardFavorite}
+    >
       {boardOptimistic.isFavorite && (
-        <IoStar
-          size={16}
-          className="text-[#e2b203]"
-          onClick={handleToggleBoardFavorite}
-        />
+        <IoStar className="group-hover:scale-125" size={16} />
       )}
       {!boardOptimistic.isFavorite && (
-        <IoStarOutline size={16} onClick={handleToggleBoardFavorite} />
+        <IoStarOutline className="group-hover:scale-125" size={16} />
       )}
     </button>
   );
