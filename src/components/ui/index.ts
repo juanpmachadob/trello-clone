@@ -1,3 +1,5 @@
+export * from "./editable-text/EditableText";
+
 export * from "./inputs/Input";
 export * from "./inputs/InputError";
 
