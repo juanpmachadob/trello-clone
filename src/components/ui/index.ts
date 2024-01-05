@@ -1,4 +1,5 @@
 export * from "./buttons/Button";
+export * from "./buttons/ButtonIcon";
 export * from "./editable-text/EditableText";
 
 export * from "./inputs/Input";
