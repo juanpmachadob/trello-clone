@@ -4,10 +4,11 @@ import { useRef, useState } from "react";
 
 interface Props {
   text: string;
+  placeholder?: string;
   handleEdit?: (newText: string) => void;
 }
 
-export const EditableText = ({ text, handleEdit }: Props) => {
+export const EditableText = ({ text, placeholder, handleEdit }: Props) => {
   const textRef = useRef<HTMLHeadingElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -32,7 +33,7 @@ export const EditableText = ({ text, handleEdit }: Props) => {
           { "whitespace-pre absolute invisible": editing }
         )}
       >
-        {textValue}
+        {textValue || placeholder}
       </h2>
       <input
         ref={inputRef}
