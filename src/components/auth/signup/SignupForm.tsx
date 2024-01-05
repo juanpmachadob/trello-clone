@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { registerWithCredentials } from "@/actions";
-import { Input } from "@/components/ui";
+import { Button, Input } from "@/components/ui";
 
 type FormInputs = {
   email: string;
@@ -69,13 +69,7 @@ const SignupForm = () => {
       <span role="" className="text-xs text-text-alternative">
         By continuing, you will create an account
       </span>
-
-      <button
-        type="submit"
-        className="w-full rounded bg-primary p-2 font-semibold text-white outline-0 hover:brightness-90 active:brightness-50"
-      >
-        Sign up
-      </button>
+      <Button type="submit">Sign up</Button>
     </form>
   );
 };

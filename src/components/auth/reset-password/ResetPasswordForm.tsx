@@ -1,6 +1,6 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { Input } from "@/components/ui";
+import { Button, Input } from "@/components/ui";
 
 type FormInputs = {
   email: string;
@@ -46,13 +46,7 @@ const ResetPasswordForm = () => {
           error={errors.email}
         />
       </div>
-
-      <button
-        type="submit"
-        className="w-full rounded bg-primary p-2 font-semibold text-white outline-0 hover:brightness-90 active:brightness-50"
-      >
-        Send recovery link
-      </button>
+      <Button type="submit">Send recovery link</Button>
     </form>
   );
 };

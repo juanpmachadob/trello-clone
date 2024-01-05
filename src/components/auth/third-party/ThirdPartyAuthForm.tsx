@@ -2,6 +2,7 @@
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoGithub } from "react-icons/io5";
 import { authenticateWithThirdParty } from "@/actions/auth";
+import { Button } from "@/components/ui";
 
 const ThirdPartyAuthForm = () => {
   /**
@@ -16,20 +17,14 @@ const ThirdPartyAuthForm = () => {
       <p className="text-center text-sm font-semibold text-text-alternative">
         Or continue with:
       </p>
-      <button
-        onClick={() => handleLogin("google")}
-        className="flex h-10 w-full items-center justify-center gap-2 rounded border border-background-alternative bg-white px-2 text-sm font-semibold text-text outline-0 hover:brightness-90 active:brightness-50"
-      >
+      <Button onClick={() => handleLogin("google")} variant="tertiary">
         <FcGoogle size={28} />
         Google
-      </button>
-      <button
-        onClick={() => handleLogin("github")}
-        className="flex h-10 w-full items-center justify-center gap-2 rounded border border-background-alternative bg-white px-2 text-sm font-semibold text-text outline-0 hover:brightness-90 active:brightness-50"
-      >
+      </Button>
+      <Button onClick={() => handleLogin("github")} variant="tertiary">
         <IoLogoGithub size={28} />
         Github
-      </button>
+      </Button>
     </div>
   );
 };

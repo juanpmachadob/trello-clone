@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginWithCredentials } from "@/actions";
-import { Input } from "@/components/ui";
+import { Button, Input } from "@/components/ui";
 
 type FormInputs = {
   email: string;
@@ -65,12 +65,7 @@ const LoginForm = () => {
           error={errors.password}
         />
       )}
-      <button
-        type="submit"
-        className="w-full rounded bg-primary p-2 font-semibold text-white outline-0 hover:brightness-90 active:brightness-50"
-      >
-        Continue
-      </button>
+      <Button type="submit">Continue</Button>
     </form>
   );
 };
