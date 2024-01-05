@@ -3,8 +3,7 @@ import { useParams } from "next/navigation";
 import { useRef, useState } from "react";
 import { IoAdd, IoClose } from "react-icons/io5";
 import { createList } from "@/actions";
-import { Button, ButtonIcon, } from "@/components/ui";
-import { ListTitle } from "../list/ListTitle";
+import { Button, ButtonIcon, EditableText } from "@/components/ui";
 
 export const ListAdd = () => {
   const params = useParams<{ id: string }>();
@@ -44,11 +43,13 @@ export const ListAdd = () => {
           onBlur={onBlur}
           className="flex w-full flex-col gap-2 self-start rounded-xl border border-white/15 bg-background p-2 shadow"
         >
-          <ListTitle
-            title={newListText}
-            placeholder="Enter list title..."
-            handleEdit={(newText) => setNewListText(newText)}
-          />
+          <header className="relative flex items-center justify-between gap-2 text-sm font-semibold text-text">
+            <EditableText
+              text={newListText}
+              placeholder="Enter list title..."
+              handleEdit={(newText) => setNewListText(newText)}
+            />
+          </header>
           <footer className="flex flex-row items-center gap-1">
             <Button size="sm" onClick={handleConfirmAdding}>
               Add list
