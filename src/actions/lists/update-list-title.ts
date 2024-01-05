@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 
-export const updateListTitle = async (id: string, title: string) => {
+export const updateListTitle = async (boardId: string, listId: string, title: string) => {
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -17,14 +17,15 @@ export const updateListTitle = async (id: string, title: string) => {
   return prisma.list
     .update({
       where: {
-        id,
+        id: listId,
         board: {
+          id: boardId,
           userId: session.user.id,
         },
       },
       data: { title },
     })
     .then(() => {
-      revalidatePath(`/boards/${id}`);
+      revalidatePath(`/boards/${boardId}`);
     });
 };

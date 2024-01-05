@@ -12,7 +12,7 @@ export const ListContainer = ({ list }: Props) => {
     const title = newTitle.trim();
     if (title === list.title) return;
 
-    await updateListTitle(list.id, title);
+    await updateListTitle(list.boardId, list.id, title);
   };
 
   return (
