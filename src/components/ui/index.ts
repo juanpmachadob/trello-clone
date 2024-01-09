@@ -8,3 +8,4 @@ export * from "./inputs/InputError";
 export * from "./navbar/Navbar";
 export * from "./user-avatar/UserAvatar";
 export * from "./profile-menu/ProfileMenu";
+export * from "./popover/Popover";
