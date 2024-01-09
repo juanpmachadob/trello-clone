@@ -11,5 +11,6 @@ export * from "./list/ListContainer";
 export * from "./list/ListTitle";
 export * from "./list/ListFooter";
 export * from "./list-add/ListAdd";
+export * from "./list-menu/ListMenu";
 
 export * from "./card/CardContainer";
