@@ -13,12 +13,14 @@ export const seedBoards: SeedBoard[] = [
     id: "dummy-board-1",
     title: "My first board",
     isFavorite: true,
+    listsOrder: ["dummy-list-1", "dummy-list-2", "dummy-list-3"],
     userId: seedUser.id,
   },
   {
     id: "dummy-board-2",
     title: "My second board",
     isFavorite: false,
+    listsOrder: [],
     userId: seedUser.id,
   },
 ];
@@ -27,16 +29,19 @@ export const seedLists: SeedList[] = [
   {
     id: "dummy-list-1",
     title: "To Do",
+    cardsOrder: ["dummy-card-1", "dummy-card-2", "dummy-card-3"],
     boardId: seedBoards[0].id,
   },
   {
     id: "dummy-list-2",
     title: "In progress",
+    cardsOrder: ["dummy-card-4"],
     boardId: seedBoards[0].id,
   },
   {
     id: "dummy-list-3",
     title: "Done",
+    cardsOrder: [],
     boardId: seedBoards[0].id,
   },
 ];
