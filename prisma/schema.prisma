@@ -65,10 +65,11 @@ model Board {
   updatedAt  DateTime @updatedAt
 
   // Relations
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
-  lists List[]
+  lists     List[]
+  listsOrder String[]
 }
 
 model List {
@@ -78,10 +79,11 @@ model List {
   updatedAt DateTime @updatedAt
 
   // Relations
-  board   Board  @relation(fields: [boardId], references: [id])
+  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
   boardId String
 
   cards Card[]
+  cardsOrder String[]
 }
 
 model Card {
@@ -91,6 +93,6 @@ model Card {
   updatedAt DateTime @updatedAt
 
   // Relations
-  list   List   @relation(fields: [listId], references: [id])
+  list   List   @relation(fields: [listId], references: [id], onDelete: Cascade)
   listId String
 }
