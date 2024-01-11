@@ -8,7 +8,7 @@ interface Props {
   handleEdit?: (newText: string) => void;
 }
 
-export const EditableText = ({ text, placeholder, handleEdit }: Props) => {
+const EditableText = ({ text, placeholder, handleEdit }: Props) => {
   const textRef = useRef<HTMLHeadingElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -48,3 +48,5 @@ export const EditableText = ({ text, placeholder, handleEdit }: Props) => {
     </div>
   );
 };
+
+export default EditableText;

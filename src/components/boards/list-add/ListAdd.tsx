@@ -5,7 +5,7 @@ import { IoAdd, IoClose } from "react-icons/io5";
 import { createList } from "@/actions";
 import { Button, ButtonIcon, EditableText } from "@/components/ui";
 
-export const ListAdd = () => {
+const ListAdd = () => {
   const params = useParams<{ id: string }>();
   const { id: boardId } = params;
 
@@ -75,3 +75,5 @@ export const ListAdd = () => {
     </li>
   );
 };
+
+export default ListAdd;

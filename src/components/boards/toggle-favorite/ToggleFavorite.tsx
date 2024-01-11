@@ -9,7 +9,7 @@ interface Props {
   board: Board;
 }
 
-export const ToggleFavorite = ({ className, board }: Props) => {
+const ToggleFavorite = ({ className, board }: Props) => {
   const [boardOptimistic, toggleBoardOptimistic] = useOptimistic(
     board,
     (state, newFavoriteValue: boolean) => ({
@@ -43,3 +43,5 @@ export const ToggleFavorite = ({ className, board }: Props) => {
     </button>
   );
 };
+
+export default ToggleFavorite;

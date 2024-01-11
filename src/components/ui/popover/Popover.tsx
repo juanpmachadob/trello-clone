@@ -8,7 +8,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const Popover = ({ children }: Props) => {
+const Popover = ({ children }: Props) => {
   return (
     <PopoverProvider>
       <PopoverWrapper>{children}</PopoverWrapper>
@@ -18,3 +18,4 @@ export const Popover = ({ children }: Props) => {
 
 Popover.Opener = PopoverOpener;
 Popover.Content = PopoverContent;
+export default Popover;

@@ -7,12 +7,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-export const ButtonIcon = ({
-  Icon,
-  iconSize = 16,
-  className,
-  ...props
-}: Props) => {
+const ButtonIcon = ({ Icon, iconSize = 16, className, ...props }: Props) => {
   return (
     <button
       type="button"
@@ -26,3 +21,5 @@ export const ButtonIcon = ({
     </button>
   );
 };
+
+export default ButtonIcon;

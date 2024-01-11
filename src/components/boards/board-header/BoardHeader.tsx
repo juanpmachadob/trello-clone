@@ -7,7 +7,7 @@ interface Props {
   board: Board;
 }
 
-export const BoardHeader = ({ board }: Props) => {
+const BoardHeader = ({ board }: Props) => {
   const handleBoardDelete = async () => {
     "use server";
     const { ok } = await deleteBoard(board.id);
@@ -29,3 +29,5 @@ export const BoardHeader = ({ board }: Props) => {
     </header>
   );
 };
+
+export default BoardHeader;

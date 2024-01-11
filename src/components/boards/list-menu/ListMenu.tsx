@@ -6,7 +6,7 @@ interface Props {
   handleDelete: () => void;
 }
 
-export const ListMenu = ({ handleDelete }: Props) => {
+const ListMenu = ({ handleDelete }: Props) => {
   return (
     <Popover>
       <Popover.Opener>
@@ -26,3 +26,5 @@ export const ListMenu = ({ handleDelete }: Props) => {
     </Popover>
   );
 };
+
+export default ListMenu;

@@ -6,7 +6,7 @@ interface Props {
   board: Board;
 }
 
-export const BoardItem = ({ board }: Props) => {
+const BoardItem = ({ board }: Props) => {
   return (
     <li className="relative">
       <Link
@@ -22,3 +22,5 @@ export const BoardItem = ({ board }: Props) => {
     </li>
   );
 };
+
+export default BoardItem;

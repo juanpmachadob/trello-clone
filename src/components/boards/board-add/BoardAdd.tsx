@@ -5,7 +5,7 @@ interface Props {
   handleAdd: () => void;
 }
 
-export const BoardAdd = ({ remaining, handleAdd }: Props) => {
+const BoardAdd = ({ remaining, handleAdd }: Props) => {
   return (
     <li className="relative">
       <div
@@ -18,3 +18,5 @@ export const BoardAdd = ({ remaining, handleAdd }: Props) => {
     </li>
   );
 };
+
+export default BoardAdd;

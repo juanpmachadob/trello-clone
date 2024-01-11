@@ -6,7 +6,7 @@ interface Props {
   width: number;
 }
 
-export const UserAvatar = ({ height = 32, width = 32 }: Props) => {
+const UserAvatar = ({ height = 32, width = 32 }: Props) => {
   const { data: session } = useSession();
   if (!session) return null;
 
@@ -34,3 +34,5 @@ export const UserAvatar = ({ height = 32, width = 32 }: Props) => {
     </span>
   );
 };
+
+export default UserAvatar;

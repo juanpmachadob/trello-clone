@@ -9,7 +9,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export const BoardsSection = ({ Icon, title, boards, children }: Props) => {
+const BoardsSection = ({ Icon, title, boards, children }: Props) => {
   return (
     <div>
       <header className="m-2 flex items-center gap-4 font-bold">
@@ -25,3 +25,5 @@ export const BoardsSection = ({ Icon, title, boards, children }: Props) => {
     </div>
   );
 };
+
+export default BoardsSection;

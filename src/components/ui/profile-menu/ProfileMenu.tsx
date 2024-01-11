@@ -7,7 +7,7 @@ interface Props {
   isDarkContent?: boolean;
 }
 
-export const ProfileMenu = ({ isDarkContent }: Props) => {
+const ProfileMenu = ({ isDarkContent }: Props) => {
   const { data: session } = useSession();
   if (!session) return null;
 
@@ -50,3 +50,5 @@ export const ProfileMenu = ({ isDarkContent }: Props) => {
     </Popover>
   );
 };
+
+export default ProfileMenu;

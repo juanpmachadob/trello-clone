@@ -7,7 +7,7 @@ interface Props {
   list: List;
 }
 
-export const ListTitle = ({ list }: Props) => {
+const ListTitle = ({ list }: Props) => {
   const handleListTitleEdit = async (newTitle: string) => {
     "use server";
     const title = newTitle.trim();
@@ -28,3 +28,5 @@ export const ListTitle = ({ list }: Props) => {
     </header>
   );
 };
+
+export default ListTitle;

@@ -6,7 +6,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "sm" | "md";
 }
 
-export const Button = ({
+const Button = ({
   type = "button",
   variant = "primary",
   size = "md",
@@ -22,7 +22,8 @@ export const Button = ({
         {
           "bg-primary text-white": variant === "primary",
           "bg-background": variant === "secondary",
-          "bg-white border border-background-alternative": variant === "tertiary",
+          "bg-white border border-background-alternative":
+            variant === "tertiary",
           "h-8": size === "sm",
           "h-10": size === "md",
         },
@@ -34,3 +35,5 @@ export const Button = ({
     </button>
   );
 };
+
+export default Button;

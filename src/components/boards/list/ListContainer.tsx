@@ -5,7 +5,7 @@ interface Props {
   list: List;
 }
 
-export const ListContainer = ({ list }: Props) => {
+const ListContainer = ({ list }: Props) => {
   return (
     <li className="flex flex-col gap-2 self-start rounded-xl border border-white/15 bg-background p-2 shadow">
       <ListTitle list={list} />
@@ -15,3 +15,5 @@ export const ListContainer = ({ list }: Props) => {
     </li>
   );
 };
+
+export default ListContainer;

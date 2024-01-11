@@ -8,7 +8,7 @@ interface Props {
   board: Board;
 }
 
-export const BoardTitle = ({ board }: Props) => {
+const BoardTitle = ({ board }: Props) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -61,3 +61,5 @@ export const BoardTitle = ({ board }: Props) => {
     </>
   );
 };
+
+export default BoardTitle;

@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-export const Navbar = ({ isDarkContent, className }: Props) => {
+const Navbar = ({ isDarkContent, className }: Props) => {
   return (
     <header
       className={clsx(
@@ -46,3 +46,5 @@ export const Navbar = ({ isDarkContent, className }: Props) => {
     </header>
   );
 };
+
+export default Navbar;

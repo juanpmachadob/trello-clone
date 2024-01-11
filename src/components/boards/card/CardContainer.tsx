@@ -6,7 +6,7 @@ interface Props {
   card: Card;
 }
 
-export const CardContainer = ({ card }: Props) => {
+const CardContainer = ({ card }: Props) => {
   return (
     <span className="group relative flex w-full cursor-pointer items-center justify-between rounded-lg bg-white p-2 text-sm text-text shadow outline-2 hover:outline hover:outline-primary">
       {card.title}
@@ -18,3 +18,5 @@ export const CardContainer = ({ card }: Props) => {
     </span>
   );
 };
+
+export default CardContainer;

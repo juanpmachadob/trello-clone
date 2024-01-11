@@ -10,7 +10,7 @@ interface Props {
   handleAdd: () => void;
 }
 
-export const BoardsSectionWithBoardAdd = ({
+const BoardsSectionWithBoardAdd = ({
   Icon,
   title,
   boards,
@@ -24,3 +24,5 @@ export const BoardsSectionWithBoardAdd = ({
     </BoardsSection>
   );
 };
+
+export default BoardsSectionWithBoardAdd;
