@@ -4,6 +4,7 @@ export * from "./board-item/BoardItem";
 
 export * from "./toggle-favorite/ToggleFavorite";
 export * from "./board-header/BoardHeader";
+export * from "./board-menu/BoardMenu";
 export * from "./board-title/BoardTitle";
 export * from "./board-add/BoardAdd";
 

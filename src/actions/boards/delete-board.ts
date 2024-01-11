@@ -1,5 +1,4 @@
 "use server";
-import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 
@@ -18,7 +17,15 @@ export const deleteBoard = async (id: string) => {
     .delete({
       where: { id, userId: session.user.id },
     })
-    .then(() => {
-      revalidatePath(`/boards/${id}`);
+    .then(() => ({
+      ok: true,
+    }))
+    .catch((error) => {
+      console.error(error);
+      return {
+        ok: false,
+        data: null,
+        error: "Internal server error",
+      };
     });
 };
