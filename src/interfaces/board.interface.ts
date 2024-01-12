@@ -8,5 +8,6 @@ export interface Board {
   createdAt: Date;
   updatedAt: Date;
 
+  listsOrder?: string[];
   lists?: List[];
 }

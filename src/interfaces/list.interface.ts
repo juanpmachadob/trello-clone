@@ -7,6 +7,7 @@ export interface List {
   createdAt: Date;
   updatedAt: Date;
 
+  cardsOrder?: string[];
   cards?: Card[];
   boardId: string;
 }
