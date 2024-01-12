@@ -6,30 +6,41 @@ import prisma from "@/lib/prisma";
 export const createList = async (boardId: string, title: string) => {
   const session = await auth();
 
-  if (!session?.user?.id) {
+  const userId = session?.user?.id as string;
+  if (!userId) {
     return {
       ok: false,
-      data: null,
       error: "You must be logged in to create a list.",
     };
   }
 
-  return prisma.list
-    .create({
-      data: {
-        title,
-        boardId,
-      },
+  return prisma
+    .$transaction(async (tx) => {
+      // First, create the list
+      const listData = await tx.list.create({
+        data: {
+          title,
+          boardId,
+        },
+      });
+
+      // Then, update the board to include the new list in the listsOrder array
+      await tx.board.update({
+        where: { id: boardId, userId },
+        data: {
+          listsOrder: {
+            push: listData.id,
+          },
+        },
+      });
     })
-    .then((data) => ({
+    .then(() => ({
       ok: true,
-      data,
     }))
     .catch((error) => {
       console.error(error);
       return {
         ok: false,
-        data: null,
         error: "Internal server error",
       };
     })
