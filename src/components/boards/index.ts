@@ -10,8 +10,8 @@ export { default as BoardAdd } from "./board-add/BoardAdd";
 
 export { default as ListContainer } from "./list/ListContainer";
 export { default as ListTitle } from "./list/ListTitle";
-export { default as ListFooter } from "./list/ListFooter";
 export { default as ListAdd } from "./list-add/ListAdd";
 export { default as ListMenu } from "./list-menu/ListMenu";
 
 export { default as CardContainer } from "./card/CardContainer";
+export { default as CardAdd } from "./card-add/CardAdd";

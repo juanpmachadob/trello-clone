@@ -1,4 +1,4 @@
-import { CardContainer, ListFooter, ListTitle } from "@/components/boards";
+import { CardAdd, CardContainer, ListTitle } from "@/components/boards";
 import type { List } from "@/interfaces";
 
 interface Props {
@@ -11,7 +11,7 @@ const ListContainer = ({ list }: Props) => {
       <ListTitle list={list} />
       {list.cards &&
         list.cards.map((card) => <CardContainer key={card.id} card={card} />)}
-      <ListFooter />
+      <CardAdd boardId={list.boardId} listId={list.id} />
     </li>
   );
 };
