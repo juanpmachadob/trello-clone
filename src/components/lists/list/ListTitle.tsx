@@ -1,6 +1,6 @@
 import { deleteList, updateListTitle } from "@/actions";
 import { EditableText } from "@/components/ui";
-import { ListMenu } from "@/components/boards";
+import { ListMenu } from "@/components/lists";
 import type { List } from "@/interfaces";
 
 interface Props {

@@ -1,4 +1,4 @@
-import { ListTitle } from "@/components/boards";
+import { ListTitle } from "@/components/lists";
 import { CardAdd, CardContainer } from "@/components/cards";
 import type { List } from "@/interfaces";
 

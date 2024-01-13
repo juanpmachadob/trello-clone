@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getBoardById } from "@/actions";
-import { BoardHeader, ListContainer, ListAdd } from "@/components/boards";
+import { BoardHeader } from "@/components/boards";
+import { ListContainer, ListAdd } from "@/components/lists";
 import { Navbar } from "@/components/ui";
 
 interface Props {
