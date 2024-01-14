@@ -11,7 +11,9 @@ const ListContainer = ({ list }: Props) => {
     <li className="flex flex-col gap-2 self-start rounded-xl border border-white/15 bg-background p-2 shadow">
       <ListTitle list={list} />
       {list.cards &&
-        list.cards.map((card) => <CardContainer key={card.id} card={card} />)}
+        list.cards.map((card) => (
+          <CardContainer key={card.id} boardId={list.boardId} card={card} />
+        ))}
       <CardAdd boardId={list.boardId} listId={list.id} />
     </li>
   );
