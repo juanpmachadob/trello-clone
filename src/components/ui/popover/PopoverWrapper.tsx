@@ -11,7 +11,11 @@ export const PopoverWrapper = ({ children }: Props) => {
   const { onBlurPopover } = useContext(PopoverContext) as PopoverContextType;
 
   return (
-    <div tabIndex={-1} onBlur={onBlurPopover} className="relative flex items-center justify-center text-text">
+    <div
+      tabIndex={-1}
+      onBlur={onBlurPopover}
+      className="visible relative flex items-center justify-center text-text"
+    >
       {children}
     </div>
   );
