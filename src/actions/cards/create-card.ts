@@ -24,6 +24,7 @@ export const createCard = async (
       const cardData = await tx.card.create({
         data: {
           title,
+          description: "",
           listId,
         },
       });
