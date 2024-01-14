@@ -21,7 +21,7 @@ const Button = ({
         "flex items-center justify-center gap-2 text-nowrap rounded px-2 text-sm font-semibold text-text outline-0 hover:brightness-90 active:brightness-50",
         {
           "bg-primary text-white": variant === "primary",
-          "bg-background": variant === "secondary",
+          "bg-background-alternative": variant === "secondary",
           "bg-white border border-background-alternative":
             variant === "tertiary",
           "h-8": size === "sm",
