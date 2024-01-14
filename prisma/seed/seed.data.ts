@@ -50,21 +50,25 @@ export const seedCards: SeedCard[] = [
   {
     id: "dummy-card-1",
     title: "loreum ipsum dolor",
+    description: "Blandit erat sed dolor ea et no illum aliquyam at.",
     listId: seedLists[0].id,
   },
   {
     id: "dummy-card-2",
     title: "sit amet consectetur adipiscing elit",
+    description: "Amet sit labore sit. Aliquyam diam dolor at magna accusam.",
     listId: seedLists[0].id,
   },
   {
     id: "dummy-card-3",
     title: "sed do eiusmod tempor incididunt",
+    description: "Zzril elit dignissim sed et consetetur clita ea diam.",
     listId: seedLists[0].id,
   },
   {
     id: "dummy-card-4",
     title: "ut labore et dolore magna aliqua",
+    description: "Aliquyam duo eirmod ea praesent est dolor rebum nulla vero.",
     listId: seedLists[1].id,
   },
 ];

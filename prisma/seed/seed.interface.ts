@@ -23,5 +23,6 @@ export interface SeedList {
 export interface SeedCard {
   id: string;
   title: string;
+  description?: string;
   listId: SeedList["id"];
 }
