@@ -12,7 +12,7 @@ const ListContainer = ({ list }: Props) => {
       <ListTitle list={list} />
       {list.cards &&
         list.cards.map((card) => (
-          <CardContainer key={card.id} boardId={list.boardId} card={card} />
+          <CardContainer key={card.id} list={list} card={card} />
         ))}
       <CardAdd boardId={list.boardId} listId={list.id} />
     </li>
