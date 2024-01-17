@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getBoardById } from "@/actions";
 import { BoardHeader } from "@/components/boards";
 import { ListContainer, ListAdd } from "@/components/lists";
+import { CardPopup } from "@/components/cards";
 import { Navbar } from "@/components/ui";
 
 interface Props {
@@ -36,6 +37,7 @@ export default async function BoardPage({ params }: Props) {
         ))}
         <ListAdd />
       </div>
+      <CardPopup />
     </main>
   );
 }
