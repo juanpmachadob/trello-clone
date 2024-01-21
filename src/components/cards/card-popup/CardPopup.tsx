@@ -35,7 +35,7 @@ const CardPopup = () => {
   return (
     <div className="absolute inset-0 z-10 flex items-start justify-center bg-black/70">
       <section className="relative my-12 min-h-96 w-1/2 rounded-xl bg-background p-4">
-        <CardPopupHeader />
+        <CardPopupHeader cardWithList={cardWithList} />
 
         <div className="grid grid-cols-12">
           <CardPopupBody />
