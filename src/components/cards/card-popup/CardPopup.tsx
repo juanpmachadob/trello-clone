@@ -39,7 +39,7 @@ const CardPopup = () => {
 
         <div className="grid grid-cols-12">
           <CardPopupBody />
-          <CardPopupActions />
+          <CardPopupActions cardWithList={cardWithList} />
         </div>
       </section>
     </div>
