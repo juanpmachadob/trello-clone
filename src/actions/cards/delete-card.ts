@@ -1,5 +1,5 @@
 "use server";
-import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 
@@ -25,7 +25,6 @@ export const deleteCard = async (
       const deletedCard = await tx.card.delete({
         where: {
           id: cardId,
-          list: { id: listId, board: { id: boardId, userId } },
         },
         select: {
           list: {
@@ -60,6 +59,6 @@ export const deleteCard = async (
       };
     })
     .finally(() => {
-      revalidatePath(`/boards/${boardId}`);
+      redirect(`/boards/${boardId}`);
     });
 };
