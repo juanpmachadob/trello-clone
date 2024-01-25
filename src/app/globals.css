@@ -9,4 +9,10 @@
   --color-text-alternative: #44546f;
   --color-background: #f1f2f4;
   --color-background-alternative: #d0d4db;
+
+  /* Toastify globals */
+  --toastify-color-light: var(--color-background);
+  --toastify-text-color-light: var(--color-text-alternative);
+  --toastify-color-success: var(--color-primary);
+  --toastify-color-error: var(--color-danger);
 }

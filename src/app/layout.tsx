@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import { Providers } from "@/providers/Providers";
+import "react-toastify/dist/ReactToastify.min.css";
 import "./globals.css";
 
 const font = Noto_Sans({
