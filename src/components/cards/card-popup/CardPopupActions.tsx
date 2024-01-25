@@ -9,6 +9,21 @@ interface Props {
 }
 
 const CardPopupActions = ({ cardWithList }: Props) => {
+  /**
+   * Deletes the card from the list
+   */
+  const handleDeleteCard = async () => {
+    const { ok } = await deleteCard(
+      cardWithList.list.boardId,
+      cardWithList.listId,
+      cardWithList.id
+    );
+    if (ok) toast.success("Card deleted successfully");
+  };
+
+  /**
+   * Copies the card link to the clipboard
+   */
   const handleCopyCardLink = () => {
     navigator.clipboard.writeText(window.location.href);
     toast.success("Card link copied to clipboard");
@@ -23,13 +38,7 @@ const CardPopupActions = ({ cardWithList }: Props) => {
             size="sm"
             variant="secondary"
             className="w-full !justify-start"
-            onClick={() =>
-              deleteCard(
-                cardWithList.list.boardId,
-                cardWithList.listId,
-                cardWithList.id
-              )
-            }
+            onClick={handleDeleteCard}
           >
             <IoTrashOutline size={16} className="text-text-alternative" />
             <span>Delete card</span>
