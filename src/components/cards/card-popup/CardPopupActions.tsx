@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { IoShareSocialOutline, IoTrashOutline } from "react-icons/io5";
 import { deleteCard } from "@/actions";
 import { Button } from "@/components/ui";
@@ -8,6 +9,11 @@ interface Props {
 }
 
 const CardPopupActions = ({ cardWithList }: Props) => {
+  const handleCopyCardLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    toast.success("Card link copied to clipboard");
+  };
+
   return (
     <aside className="col-span-3 flex flex-col gap-2">
       <p className="text-xs font-semibold text-text-alternative">Actions</p>
@@ -34,6 +40,7 @@ const CardPopupActions = ({ cardWithList }: Props) => {
             size="sm"
             variant="secondary"
             className="w-full !justify-start"
+            onClick={handleCopyCardLink}
           >
             <IoShareSocialOutline size={16} className="text-text-alternative" />
             <span>Share</span>
