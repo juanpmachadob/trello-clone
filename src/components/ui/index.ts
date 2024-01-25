@@ -1,6 +1,7 @@
 export { default as Button } from "./buttons/Button";
 export { default as ButtonIcon } from "./buttons/ButtonIcon";
 export { default as EditableText } from "./editable-text/EditableText";
+export { default as EditableWysiwyg } from "./editable-wysiwyg/EditableWysiwyg";
 
 export { default as Input } from "./inputs/Input";
 export { default as InputError } from "./inputs/InputError";
