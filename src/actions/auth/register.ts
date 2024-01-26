@@ -5,12 +5,13 @@ import prisma from "@/lib/prisma";
 import { loginWithCredentials } from "./login";
 
 export const registerWithCredentials = async (
+  name: string,
   email: string,
   password: string
 ) =>
   prisma.user
     .create({
-      data: { email, password: bcryptjs.hashSync(password) },
+      data: { name, email, password: bcryptjs.hashSync(password) },
     })
     .then(() => loginWithCredentials(email, password))
     .catch((err) => {
