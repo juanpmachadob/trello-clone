@@ -9,7 +9,6 @@ interface Props {
 
 const ListTitle = ({ list }: Props) => {
   const handleListTitleEdit = async (newTitle: string) => {
-    "use server";
     const title = newTitle.trim();
     if (title === list.title) return;
 
@@ -17,7 +16,6 @@ const ListTitle = ({ list }: Props) => {
   };
 
   const handleListDelete = async () => {
-    "use server";
     await deleteList(list.boardId, list.id);
   };
 
