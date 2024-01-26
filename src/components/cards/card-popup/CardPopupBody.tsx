@@ -1,4 +1,5 @@
-import { useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { LuText } from "react-icons/lu";
 import { updateCardDescription } from "@/actions";
@@ -13,6 +14,9 @@ const CardPopupBody = ({ cardWithList }: Props) => {
   const [description, setDescription] = useState(cardWithList.description);
   const [isEditing, setIsEditing] = useState(false);
 
+  /**
+   * Updates the card description and sets the isEditing state to false
+   */
   const handleUpdateDescription = async () => {
     setIsEditing(false);
     await updateCardDescription(
@@ -22,6 +26,13 @@ const CardPopupBody = ({ cardWithList }: Props) => {
       description
     );
   };
+
+  /**
+   * Resets the description state when the cardWithList prop changes
+   */
+  useEffect(() => {
+    setDescription(cardWithList.description);
+  }, [cardWithList.description]);
 
   return (
     <div className="col-span-9">

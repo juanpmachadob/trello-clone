@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   text: string;
@@ -15,10 +15,21 @@ const EditableText = ({ text, placeholder, handleEdit }: Props) => {
   const [editing, setEditing] = useState(false);
   const [textValue, setTextValue] = useState(text);
 
+  /**
+   * Sets the editing state to false and calls the handleEdit function
+   * when the input element loses focus
+   */
   const onBlur = () => {
     setEditing(false);
     handleEdit && handleEdit(textValue);
   };
+
+  /**
+   * Resets the textValue state when the text prop changes
+   */
+  useEffect(() => {
+    setTextValue(text);
+  }, [text]);
 
   return (
     <div className="flex w-full flex-row items-center text-nowrap">

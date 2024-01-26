@@ -52,7 +52,7 @@ const CardPopupHeader = ({ cardWithList }: Props) => {
           />
         </span>
         <p className="ml-10 text-xs text-text-alternative">
-          in list <u>{cardWithList.title}</u>
+          in list <u>{cardWithList.list.title}</u>
         </p>
       </div>
       <ButtonIcon
