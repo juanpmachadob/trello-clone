@@ -15,7 +15,10 @@ export const PopoverOpener = ({ children }: Props) => {
   return (
     <span
       className="cursor-pointer"
-      onClick={() => setShowPopover(!showPopover)}
+      onClick={(e) => {
+        e.stopPropagation();
+        setShowPopover(!showPopover);
+      }}
     >
       {children}
     </span>
