@@ -52,6 +52,7 @@ const LoginForm = () => {
 
       {showPassword && (
         <Input
+          autoFocus={true}
           id="password"
           type="password"
           placeholder="Enter password"
