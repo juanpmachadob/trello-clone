@@ -16,7 +16,7 @@ const ListTitle = ({ list }: Props) => {
   };
 
   return (
-    <header className="relative flex items-center justify-between gap-2 text-sm text-text">
+    <header className="relative flex items-center justify-between gap-2 px-2 text-sm text-text">
       <EditableText text={list.title} handleEdit={handleListTitleEdit} />
       <ListMenu boardId={list.boardId} listId={list.id} />
     </header>
