@@ -6,6 +6,7 @@ import { reorderListCards } from "@/actions";
 import { ListTitle } from "@/components/lists";
 import { CardAdd, CardContainer } from "@/components/cards";
 import type { List } from "@/interfaces";
+import "./list-container.css";
 
 interface Props {
   list: List;
@@ -34,15 +35,18 @@ const ListContainer = ({ list, isDraggingCard, setIsDraggingCard }: Props) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 self-start rounded-xl border border-white/15 bg-background p-2 shadow">
+    <div className="flex flex-col gap-2 self-start rounded-xl border border-white/15 bg-background py-2 shadow">
       <ListTitle list={list} />
       <Reorder.Group
         axis="y"
         values={cards}
         onReorder={setCards}
-        className={clsx("flex flex-col gap-2", {
-          "!pointer-events-none": isDraggingCard,
-        })}
+        className={clsx(
+          "list-container mx-1 flex flex-col gap-2 overflow-y-auto px-1 py-0.5",
+          {
+            "!pointer-events-none": isDraggingCard,
+          }
+        )}
       >
         {cards.map((card) => (
           <Reorder.Item

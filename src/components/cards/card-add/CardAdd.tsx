@@ -30,7 +30,7 @@ const CardAdd = ({ boardId, listId }: Props) => {
   };
 
   return (
-    <div>
+    <div className="px-2">
       {isAdding && (
         <form className="flex w-full flex-col gap-2 self-start rounded-xl">
           <TextArea

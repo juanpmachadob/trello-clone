@@ -1,0 +1,12 @@
+.list-container {
+  max-height: calc(100vh - 234px);
+}
+
+.list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: var(--color-background-alternative);
+}

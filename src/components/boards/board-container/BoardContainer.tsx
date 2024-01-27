@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Reorder } from "framer-motion";
+import clsx from "clsx";
 import { ListAdd, ListContainer } from "@/components/lists";
 import type { Board } from "@/interfaces";
-import clsx from "clsx";
 import { reorderBoardLists } from "@/actions";
+import "./board-container.css";
 
 interface Props {
   board: Board;
@@ -33,17 +34,18 @@ const BoardContainer = ({ board }: Props) => {
   };
 
   return (
-    <div className="m-4">
+    <div className="board-container relative mx-4 my-2 flex-auto overflow-y-hidden py-2">
       <Reorder.Group
         axis="x"
         values={lists}
         onReorder={setLists}
-        className={clsx("grid grid-cols-5 gap-4", {
+        className={clsx("flex flex-row gap-4", {
           "!pointer-events-none": isDraggingList,
         })}
       >
         {lists.map((list) => (
           <Reorder.Item
+            className="min-w-64"
             key={list.id}
             value={list}
             drag={!isDraggingCard}
