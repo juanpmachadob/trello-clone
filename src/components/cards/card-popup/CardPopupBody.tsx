@@ -43,14 +43,16 @@ const CardPopupBody = ({ cardWithList }: Props) => {
             Description
           </h2>
         </span>
-        <Button
-          className={clsx({ invisible: isEditing, visible: !isEditing })}
-          size="sm"
-          variant="secondary"
-          onClick={() => setIsEditing(true)}
-        >
-          Edit
-        </Button>
+        {!isEditing && description.length > 0 && (
+          <Button
+            className={clsx({ invisible: isEditing, visible: !isEditing })}
+            size="sm"
+            variant="secondary"
+            onClick={() => setIsEditing(true)}
+          >
+            Edit
+          </Button>
+        )}
       </span>
       <div
         id="wysiwyg"
@@ -80,11 +82,21 @@ const CardPopupBody = ({ cardWithList }: Props) => {
             </div>
           </>
         )}
-        {!isEditing && (
+        {!isEditing && description.length > 0 && (
           <p
             dangerouslySetInnerHTML={{ __html: description }}
             onClick={() => setIsEditing(true)}
           ></p>
+        )}
+        {!isEditing && description.length === 0 && (
+          <Button
+            className="!h-14 !items-start !justify-start px-4 py-2"
+            size="sm"
+            variant="secondary"
+            onClick={() => setIsEditing(true)}
+          >
+            Add a more detailed description...
+          </Button>
         )}
       </div>
     </div>
