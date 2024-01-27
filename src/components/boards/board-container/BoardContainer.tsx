@@ -12,7 +12,8 @@ interface Props {
 
 const BoardContainer = ({ board }: Props) => {
   const [lists, setLists] = useState(board.lists || []);
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDraggingList, setIsDraggingList] = useState(false);
+  const [isDraggingCard, setIsDraggingCard] = useState(false);
 
   /**
    * Update list when board changes
@@ -25,7 +26,7 @@ const BoardContainer = ({ board }: Props) => {
    * Stop dragging and reorder lists
    */
   const handleReorderLists = async () => {
-    setIsDragging(false);
+    setIsDraggingList(false);
 
     const orderedListsIds = lists.map((list) => list.id);
     await reorderBoardLists(board.id, orderedListsIds);
@@ -38,17 +39,23 @@ const BoardContainer = ({ board }: Props) => {
         values={lists}
         onReorder={setLists}
         className={clsx("grid grid-cols-5 gap-4", {
-          "!pointer-events-none": isDragging,
+          "!pointer-events-none": isDraggingList,
         })}
       >
         {lists.map((list) => (
           <Reorder.Item
             key={list.id}
             value={list}
-            onDrag={() => setIsDragging(true)}
+            drag={!isDraggingCard}
+            onDrag={() => setIsDraggingList(true)}
             onDragEnd={handleReorderLists}
           >
-            <ListContainer key={list.id} list={list} />
+            <ListContainer
+              key={list.id}
+              list={list}
+              isDraggingCard={isDraggingCard}
+              setIsDraggingCard={setIsDraggingCard}
+            />
           </Reorder.Item>
         ))}
         <ListAdd />

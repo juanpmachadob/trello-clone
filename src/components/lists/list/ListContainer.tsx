@@ -9,11 +9,12 @@ import type { List } from "@/interfaces";
 
 interface Props {
   list: List;
+  isDraggingCard: boolean;
+  setIsDraggingCard: (isDragging: boolean) => void;
 }
 
-const ListContainer = ({ list }: Props) => {
+const ListContainer = ({ list, isDraggingCard, setIsDraggingCard }: Props) => {
   const [cards, setCards] = useState(list.cards || []);
-  const [isDragging, setIsDragging] = useState(false);
 
   /**
    * Update cards when list changes
@@ -26,7 +27,7 @@ const ListContainer = ({ list }: Props) => {
    * Stop dragging and reorder cards
    */
   const handleReorderCards = async () => {
-    setIsDragging(false);
+    setIsDraggingCard(false);
 
     const orderedCardsIds = cards.map((card) => card.id);
     await reorderListCards(list.boardId, list.id, orderedCardsIds);
@@ -40,14 +41,14 @@ const ListContainer = ({ list }: Props) => {
         values={cards}
         onReorder={setCards}
         className={clsx("flex flex-col gap-2", {
-          "!pointer-events-none": isDragging,
+          "!pointer-events-none": isDraggingCard,
         })}
       >
         {cards.map((card) => (
           <Reorder.Item
             key={card.id}
             value={card}
-            onDrag={() => setIsDragging(true)}
+            onDrag={() => setIsDraggingCard(true)}
             onDragEnd={handleReorderCards}
           >
             <CardContainer key={card.id} list={list} card={card} />
