@@ -1,8 +1,9 @@
 "use client";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { registerWithCredentials } from "@/actions";
-import { Button, Input } from "@/components/ui";
+import { Button, ErrorAlert, Input } from "@/components/ui";
 
 type FormInputs = {
   name: string;
@@ -16,8 +17,11 @@ const SignupForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputs>();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [showEmail, setShowEmail] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
   const onSubmit = handleSubmit(async (data) => {
     if (!showEmail) {
@@ -30,8 +34,17 @@ const SignupForm = () => {
       return;
     }
 
+    if (error) setError("");
     const { name, email, password } = data;
-    await registerWithCredentials(name, email.toLowerCase(), password);
+
+    if (searchParams.has("error")) {
+      router.replace("/auth/signup");
+    }
+
+    const res = await registerWithCredentials(name, email.toLowerCase(), password);
+    if (!res.ok && "error" in res) {
+      setError(res.error);
+    }
   });
 
   return (
@@ -42,12 +55,14 @@ const SignupForm = () => {
     >
       <h1 className="mb-2 text-center font-semibold">Sign up to continue</h1>
 
+      <ErrorAlert error={error} />
+
       <Input
         autoFocus={true}
         id="name"
         placeholder="Enter your name"
         {...register("name", {
-          required: true,
+          required: "Please enter your name",
           minLength: {
             value: 4,
             message: "Name must be at least 4 characters long",
@@ -80,7 +95,7 @@ const SignupForm = () => {
           type="password"
           placeholder="Create a password"
           {...register("password", {
-            required: true,
+            required: "Please enter your password",
             minLength: {
               value: 6,
               message: "Password must be at least 6 characters long",

@@ -11,3 +11,4 @@ export { default as Navbar } from "./navbar/Navbar";
 export { default as UserAvatar } from "./user-avatar/UserAvatar";
 export { default as ProfileMenu } from "./profile-menu/ProfileMenu";
 export { default as Popover } from "./popover/Popover";
+export { default as ErrorAlert } from "./error-alert/ErrorAlert";

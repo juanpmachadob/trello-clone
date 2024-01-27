@@ -1,4 +1,5 @@
 "use server";
+import { CredentialsSignin } from "next-auth";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { signIn } from "@/auth";
 
@@ -46,7 +47,14 @@ export const loginWithCredentials = async (email: string, password: string) =>
       }
 
       console.error(err);
+
+      let errorMsg = "An error occurred. Please try again.";
+      if (err instanceof CredentialsSignin) {
+        errorMsg = "Incorrect email address and / or password.";
+      }
+      
       return {
         ok: false,
+        error: errorMsg,
       };
     });

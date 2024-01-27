@@ -20,8 +20,13 @@ export const registerWithCredentials = async (
         throw err;
       }
 
-      console.error(err);
+      let errorMsg = "An error occurred. Please try again.";
+      if (err.code === "P2002") {
+        errorMsg = "This email address is already in use.";
+      }
+
       return {
         ok: false,
+        error: errorMsg,
       };
     });

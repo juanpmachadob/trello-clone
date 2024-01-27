@@ -1,8 +1,9 @@
 "use client";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginWithCredentials } from "@/actions";
-import { Button, Input } from "@/components/ui";
+import { Button, ErrorAlert, Input } from "@/components/ui";
 
 type FormInputs = {
   email: string;
@@ -15,7 +16,10 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputs>();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
   const onSubmit = handleSubmit(async (data) => {
     if (!showPassword) {
@@ -23,8 +27,17 @@ const LoginForm = () => {
       return;
     }
 
+    if (error) setError("");
     const { email, password } = data;
-    await loginWithCredentials(email.toLowerCase(), password);
+
+    if (searchParams.has("error")) {
+      router.replace("/auth/login");
+    }
+
+    const res = await loginWithCredentials(email.toLowerCase(), password);
+    if (!res.ok && "error" in res) {
+      setError(res.error);
+    }
   });
 
   return (
@@ -34,6 +47,8 @@ const LoginForm = () => {
       noValidate
     >
       <h1 className="mb-2 text-center font-semibold">Log in to continue</h1>
+
+      <ErrorAlert error={error} />
 
       <Input
         autoFocus={true}
@@ -57,7 +72,7 @@ const LoginForm = () => {
           type="password"
           placeholder="Enter password"
           {...register("password", {
-            required: true,
+            required: "Please enter your password",
             minLength: {
               value: 6,
               message: "Password must be at least 6 characters long",
