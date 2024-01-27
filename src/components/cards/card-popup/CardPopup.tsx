@@ -34,10 +34,10 @@ const CardPopup = () => {
   if (!searchParams.has("card") || !cardWithList) return null;
   return (
     <div className="absolute inset-0 z-10 flex items-start justify-center overflow-y-auto bg-black/70">
-      <section className="relative my-12 min-h-96 w-1/2 rounded-xl bg-background p-4">
+      <section className="relative mx-4 my-12 min-h-96 w-full rounded-xl bg-background  p-4 md:w-2/3 lg:w-1/2">
         <CardPopupHeader cardWithList={cardWithList} />
 
-        <div className="grid grid-cols-12 gap-4">
+        <div className="flex grid-cols-12 flex-col gap-4 md:grid">
           <CardPopupBody cardWithList={cardWithList} />
           <CardPopupActions
             boardId={cardWithList.list.boardId}
