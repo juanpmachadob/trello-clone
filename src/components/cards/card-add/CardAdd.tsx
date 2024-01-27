@@ -1,15 +1,17 @@
 "use client";
-import { useRef, useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { IoAdd, IoClose } from "react-icons/io5";
 import { createCard } from "@/actions/cards";
 import { Button, ButtonIcon, TextArea } from "@/components/ui";
-import { IoAdd, IoClose } from "react-icons/io5";
 
 interface Props {
   boardId: string;
   listId: string;
+  listRef: MutableRefObject<HTMLDivElement | null>;
 }
 
-const CardAdd = ({ boardId, listId }: Props) => {
+const CardAdd = ({ boardId, listId, listRef }: Props) => {
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [newCardText, setNewCardText] = useState("");
@@ -31,16 +33,19 @@ const CardAdd = ({ boardId, listId }: Props) => {
 
   return (
     <div className="px-2">
-      {isAdding && (
-        <form className="flex w-full flex-col gap-2 self-start rounded-xl">
-          <TextArea
-            ref={titleRef}
-            autoFocus={true}
-            id="title"
-            placeholder="Enter a title for this card..."
-            value={newCardText}
-            onChange={(e) => setNewCardText(e.target.value)}
-          />
+      {listRef.current && isAdding && (
+        <div className="flex w-full flex-col gap-2 self-start rounded-xl">
+          {createPortal(
+            <TextArea
+              ref={titleRef}
+              autoFocus={true}
+              id="title"
+              placeholder="Enter a title for this card..."
+              value={newCardText}
+              onChange={(e) => setNewCardText(e.target.value)}
+            />,
+            listRef.current
+          )}
           <footer className="flex flex-row items-center gap-1">
             <Button size="sm" type="submit" onClick={handleConfirmAdding}>
               Add card
@@ -51,7 +56,7 @@ const CardAdd = ({ boardId, listId }: Props) => {
               className="rounded"
             />
           </footer>
-        </form>
+        </div>
       )}
       {!isAdding && (
         <button

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reorder } from "framer-motion";
 import clsx from "clsx";
 import { reorderListCards } from "@/actions";
@@ -16,6 +16,7 @@ interface Props {
 
 const ListContainer = ({ list, isDraggingCard, setIsDraggingCard }: Props) => {
   const [cards, setCards] = useState(list.cards || []);
+  const listRef = useRef<HTMLDivElement | null>(null);
 
   /**
    * Update cards when list changes
@@ -38,6 +39,8 @@ const ListContainer = ({ list, isDraggingCard, setIsDraggingCard }: Props) => {
     <div className="flex flex-col gap-2 self-start rounded-xl border border-white/15 bg-background py-2 shadow">
       <ListTitle list={list} />
       <Reorder.Group
+        id={list.id}
+        ref={listRef}
         axis="y"
         values={cards}
         onReorder={setCards}
@@ -59,7 +62,7 @@ const ListContainer = ({ list, isDraggingCard, setIsDraggingCard }: Props) => {
           </Reorder.Item>
         ))}
       </Reorder.Group>
-      <CardAdd boardId={list.boardId} listId={list.id} />
+      <CardAdd listRef={listRef} boardId={list.boardId} listId={list.id} />
     </div>
   );
 };

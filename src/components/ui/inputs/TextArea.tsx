@@ -20,7 +20,7 @@ const TextArea = forwardRef(
         placeholder={placeholder}
         autoFocus={autoFocus}
         className={clsx(
-          "relative flex w-full cursor-pointer resize-none items-center justify-between rounded-lg bg-white p-2 text-sm text-text shadow outline-2 outline-primary hover:outline focus:outline",
+          "relative flex min-h-14 w-full cursor-pointer resize-none items-center justify-between rounded-lg bg-white p-2 text-sm text-text shadow outline-2 outline-primary hover:outline focus:outline",
           className
         )}
         {...props}
