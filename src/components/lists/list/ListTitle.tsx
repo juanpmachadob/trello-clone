@@ -1,4 +1,4 @@
-import { deleteList, updateListTitle } from "@/actions";
+import { updateListTitle } from "@/actions";
 import { EditableText } from "@/components/ui";
 import { ListMenu } from "@/components/lists";
 import type { List } from "@/interfaces";
@@ -15,14 +15,10 @@ const ListTitle = ({ list }: Props) => {
     await updateListTitle(list.boardId, list.id, title);
   };
 
-  const handleListDelete = async () => {
-    await deleteList(list.boardId, list.id);
-  };
-
   return (
     <header className="relative flex items-center justify-between gap-2 text-sm text-text">
       <EditableText text={list.title} handleEdit={handleListTitleEdit} />
-      <ListMenu handleDelete={handleListDelete} />
+      <ListMenu boardId={list.boardId} listId={list.id} />
     </header>
   );
 };

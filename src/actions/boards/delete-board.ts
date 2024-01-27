@@ -8,7 +8,6 @@ export const deleteBoard = async (id: string) => {
   if (!session?.user?.id) {
     return {
       ok: false,
-      data: null,
       error: "You must be logged in to delete a board.",
     };
   }
@@ -24,7 +23,6 @@ export const deleteBoard = async (id: string) => {
       console.error(error);
       return {
         ok: false,
-        data: null,
         error: "Internal server error",
       };
     });

@@ -1,5 +1,5 @@
 "use server";
-import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 
@@ -14,7 +14,6 @@ export const deleteCard = async (
   if (!userId) {
     return {
       ok: false,
-      data: null,
       error: "You must be logged in to delete a card.",
     };
   }
@@ -59,6 +58,6 @@ export const deleteCard = async (
       };
     })
     .finally(() => {
-      redirect(`/boards/${boardId}`);
+      revalidatePath(`/boards/${boardId}`);
     });
 };

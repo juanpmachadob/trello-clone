@@ -1,12 +1,23 @@
 "use client";
+import { toast } from "react-toastify";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
+import { deleteList } from "@/actions";
 import { Popover, ButtonIcon } from "@/components/ui";
 
 interface Props {
-  handleDelete: () => void;
+  boardId: string;
+  listId: string;
 }
 
-const ListMenu = ({ handleDelete }: Props) => {
+const ListMenu = ({ boardId, listId }: Props) => {
+  /**
+   * Deletes the list from the board
+   */
+  const handleListDelete = async () => {
+    const { ok } = await deleteList(boardId, listId);
+    if (ok) toast.success("List deleted successfully");
+  };
+
   return (
     <Popover>
       <Popover.Opener>
@@ -18,7 +29,7 @@ const ListMenu = ({ handleDelete }: Props) => {
 
       <Popover.Content title="List actions" className="left-0 top-8">
         <Popover.Content.Section title="Options">
-          <Popover.Content.Section.Item onClick={() => handleDelete()}>
+          <Popover.Content.Section.Item onClick={handleListDelete}>
             Delete this list
           </Popover.Content.Section.Item>
         </Popover.Content.Section>

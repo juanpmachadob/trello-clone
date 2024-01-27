@@ -29,7 +29,7 @@ const CardContainer = ({ list, card }: Props) => {
     >
       {card.title}
       <span className="invisible absolute right-1 group-hover:visible">
-        <CardMenu list={list} card={card} />
+        <CardMenu boardId={list.boardId} listId={list.id} cardId={card.id} />
       </span>
     </span>
   );

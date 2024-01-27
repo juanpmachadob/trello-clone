@@ -1,24 +1,28 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { IoShareSocialOutline, IoTrashOutline } from "react-icons/io5";
 import { deleteCard } from "@/actions";
 import { Button } from "@/components/ui";
-import type { CardWithList } from "@/interfaces";
 
 interface Props {
-  cardWithList: CardWithList;
+  boardId: string;
+  listId: string;
+  cardId: string;
 }
 
-const CardPopupActions = ({ cardWithList }: Props) => {
+const CardPopupActions = ({ boardId, listId, cardId }: Props) => {
+  const { push } = useRouter();
+
   /**
    * Deletes the card from the list
    */
-  const handleDeleteCard = async () => {
-    const { ok } = await deleteCard(
-      cardWithList.list.boardId,
-      cardWithList.listId,
-      cardWithList.id
-    );
-    if (ok) toast.success("Card deleted successfully");
+  const handleCardDelete = async () => {
+    const { ok } = await deleteCard(boardId, listId, cardId);
+    if (ok) {
+      toast.success("Card deleted successfully");
+      push(`/boards/${boardId}`);
+    }
   };
 
   /**
@@ -38,7 +42,7 @@ const CardPopupActions = ({ cardWithList }: Props) => {
             size="sm"
             variant="secondary"
             className="w-full !justify-start"
-            onClick={handleDeleteCard}
+            onClick={handleCardDelete}
           >
             <IoTrashOutline size={16} className="text-text-alternative" />
             <span>Delete card</span>

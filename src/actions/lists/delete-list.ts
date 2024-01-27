@@ -10,7 +10,6 @@ export const deleteList = async (boardId: string, listId: string) => {
   if (!userId) {
     return {
       ok: false,
-      data: null,
       error: "You must be logged in to delete a list.",
     };
   }
