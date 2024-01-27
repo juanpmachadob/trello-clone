@@ -25,14 +25,11 @@ const CardPopupHeader = ({ cardWithList }: Props) => {
   };
 
   /**
-   * Validates and updates the card title
+   * Updates the card title
    *
    * @param newTitle - The new title of the card
    */
   const handleCardTitleEdit = async (newTitle: string) => {
-    const title = newTitle.trim();
-    if (title === cardWithList.title) return;
-
     await updateCardTitle(
       cardWithList.list.boardId,
       cardWithList.list.id,

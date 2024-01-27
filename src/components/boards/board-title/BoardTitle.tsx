@@ -24,13 +24,19 @@ const BoardTitle = ({ board }: Props) => {
     }
   }, [titleValue, editing]);
 
+  /**
+   * Sets the editing state to false and updates the board title
+   */
   const handleEditTitle = async () => {
     setEditing(false);
+    const newTitleValue = titleValue.trim();
 
-    const title = titleValue.trim();
-    if (title !== board.title.trim()) {
-      await updateBoardTitle(board.id, title);
+    if (!newTitleValue || newTitleValue === board.title) {
+      setTitleValue(board.title);
+      return;
     }
+
+    await updateBoardTitle(board.id, newTitleValue);
   };
 
   return (

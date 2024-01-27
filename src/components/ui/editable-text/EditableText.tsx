@@ -16,12 +16,17 @@ const EditableText = ({ text, placeholder, handleEdit }: Props) => {
   const [textValue, setTextValue] = useState(text);
 
   /**
-   * Sets the editing state to false and calls the handleEdit function
-   * when the input element loses focus
+   * Sets the editing state to false and updates the text value
    */
   const onBlur = () => {
     setEditing(false);
-    handleEdit && handleEdit(textValue);
+    const newTextValue = textValue.trim();
+
+    if (!newTextValue || newTextValue === text) {
+      setTextValue(text);
+      return;
+    }
+    handleEdit && handleEdit(newTextValue);
   };
 
   /**

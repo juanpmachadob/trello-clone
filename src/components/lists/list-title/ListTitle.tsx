@@ -8,11 +8,13 @@ interface Props {
 }
 
 const ListTitle = ({ list }: Props) => {
+  /**
+   * Updates the list title
+   *
+   * @param newTitle - The new title of the list
+   */
   const handleListTitleEdit = async (newTitle: string) => {
-    const title = newTitle.trim();
-    if (title === list.title) return;
-
-    await updateListTitle(list.boardId, list.id, title);
+    await updateListTitle(list.boardId, list.id, newTitle);
   };
 
   return (
