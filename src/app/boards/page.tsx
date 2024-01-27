@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { IoAlbums, IoStarOutline } from "react-icons/io5";
