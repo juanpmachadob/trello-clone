@@ -7,3 +7,4 @@ export { default as BoardHeader } from "./board-header/BoardHeader";
 export { default as BoardMenu } from "./board-menu/BoardMenu";
 export { default as BoardTitle } from "./board-title/BoardTitle";
 export { default as BoardAdd } from "./board-add/BoardAdd";
+export { default as BoardContainer } from "./board-container/BoardContainer";
