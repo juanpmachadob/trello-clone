@@ -28,6 +28,7 @@ const CardAdd = ({ boardId, listId, listRef }: Props) => {
 
   const handleConfirmAdding = async () => {
     handleCancelAdding();
+    if (!newCardText.trim()) return;
     await createCard(boardId, listId, newCardText);
   };
 
