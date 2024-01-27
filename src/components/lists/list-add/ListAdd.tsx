@@ -35,7 +35,7 @@ const ListAdd = () => {
   };
 
   return (
-    <li className="flex min-w-64 self-start">
+    <li className="flex min-w-64 self-start pr-4">
       {isAdding && (
         <div
           ref={cardRef}

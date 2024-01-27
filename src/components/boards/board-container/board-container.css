@@ -1,7 +1,9 @@
+.board-container {
+  min-height: calc(100vh - 120px);
+}
+
 .board-container::-webkit-scrollbar {
   height: 6px;
-  margin: 1rem;
-  padding: 1rem;
 }
 
 .board-container::-webkit-scrollbar-thumb {

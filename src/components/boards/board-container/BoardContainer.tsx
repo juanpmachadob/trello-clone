@@ -34,7 +34,7 @@ const BoardContainer = ({ board }: Props) => {
   };
 
   return (
-    <div className="board-container relative mx-4 my-2 flex-auto overflow-y-hidden py-2">
+    <div className="board-container relative my-2 flex-auto overflow-y-hidden px-4 py-2">
       <Reorder.Group
         axis="x"
         values={lists}
