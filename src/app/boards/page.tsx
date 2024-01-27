@@ -31,7 +31,7 @@ export default async function BoardsPage() {
   return (
     <main className="flex min-h-screen flex-auto flex-col items-center bg-white">
       <Navbar className="bg-white" isDarkContent={true} />
-      <div className="my-10 flex w-full max-w-4xl flex-col gap-12">
+      <div className="flex w-full max-w-4xl flex-col gap-12 md:my-10">
         {favoriteBoards.length > 0 && (
           <BoardsSection
             Icon={IoStarOutline}
