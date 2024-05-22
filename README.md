@@ -15,7 +15,59 @@ This entire project is a clone of Trello, made for educational purposes to test 
       - [Try demo](#try-demo)
   - [Project preview 🖼️](#project-preview-️)
     - [Table of contents 📃](#table-of-contents-)
+  - [Starting 🚀](#starting-)
+    - [Pre-requirements 📋](#pre-requirements-)
+    - [Installation 🔧](#installation-)
+  - [Deployment 📦](#deployment-)
   - [Built with 🛠️](#built-with-️)
+
+
+
+## Starting 🚀
+### Pre-requirements 📋
+
+* [Git](https://git-scm.com/)
+* [Node.js (npm)](https://nodejs.org/)
+* [PostgreSQL DB](https://www.postgresql.org/)
+
+### Installation 🔧
+
+Local installation:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/juanpmachadob/trello-clone.git
+
+# Open terminal in project path
+$ cd trello-clone
+
+# Install dependencies
+$ npm install
+
+# Copy .env file
+$ cp .env.example .env
+
+# Fill .env variables
+
+# Deploy database with docker compose
+$ docker compose up -d
+
+# Setup PostgreSQL database
+$ npx prisma migrate deploy
+$ npx prisma generate
+
+# Seed PostgreSQL database
+$ npx prisma db seed
+```
+
+## Deployment 📦
+
+```bash
+# Open terminal in project path and run
+$ cd trello-clone
+$ npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Built with 🛠️
 
