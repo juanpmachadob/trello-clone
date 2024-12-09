@@ -39,13 +39,17 @@ const BoardContainer = ({ board }: Props) => {
         axis="x"
         values={lists}
         onReorder={setLists}
-        className={clsx("flex flex-row gap-4", {
-          "!pointer-events-none": isDraggingList,
-        })}
+        style={{
+          display: "flex",
+          gap: "1rem",
+          pointerEvents: isDraggingList ? "none" : "auto",
+        }}
       >
         {lists.map((list) => (
           <Reorder.Item
-            className="min-w-64"
+            style={{
+              minWidth: "16rem",
+            }}
             key={list.id}
             value={list}
             drag={!isDraggingCard}

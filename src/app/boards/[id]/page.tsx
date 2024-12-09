@@ -9,13 +9,11 @@ import { CardPopup } from "@/components/cards";
 import { Navbar } from "@/components/ui";
 
 interface Props {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
   const { data: board } = await getBoardById(id);
 
   return {
@@ -25,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BoardPage({ params }: Props) {
-  const { id } = params;
+  const { id } = await params;
   const { data: board } = await getBoardById(id);
 
   if (!board) notFound();

@@ -36,20 +36,23 @@ const ListContainer = ({ list, isDraggingCard, setIsDraggingCard }: Props) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 self-start rounded-xl border border-white/15 bg-background py-2 shadow">
+    <div className="list-container flex flex-col gap-2 self-start rounded-xl border border-white/15 bg-background py-2 shadow">
       <ListTitle list={list} />
       <Reorder.Group
-        id={list.id}
+        // id={list.id}
         ref={listRef}
         axis="y"
         values={cards}
         onReorder={setCards}
-        className={clsx(
-          "list-container mx-1 flex flex-col gap-2 overflow-y-auto px-1 py-0.5",
-          {
-            "!pointer-events-none": isDraggingCard,
-          }
-        )}
+        style={{
+          margin: "0 0.25rem",
+          display: "flex",
+          flexDirection: "column",
+          overflowY: "auto",
+          padding: "0.125rem 0.25rem",
+          pointerEvents: isDraggingCard ? "none" : "auto",
+          gap: "0.5rem",
+        }}
       >
         {cards.map((card) => (
           <Reorder.Item
